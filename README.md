@@ -191,7 +191,7 @@ reimport2.bat
     **Important** : Make sure to use *quickbms_4gb_files.exe* and not *quickbms.exe*.  
     I will judge you if you don't :)
 
-5. The program will ask you to provide a *BMS script*, grab [this one]().//To-Do
+5. The program will ask you to provide a *BMS script*, grab [this one](UnrealPak.zip).
 
     *Tip* : I recommend you put the BMS script inside the *# Ressources* folder.
 
@@ -277,7 +277,7 @@ Try opening one, does it look familiar ?
 Packing a folder (Typically a mod) is the process of "*closing*" a folder containing modded assets and transforming it into a format the game can use.  
 To do so you will need a tool called *UnrealPak*.
 
-1. Download it from [here](https://aluigi.altervista.org/papers/quickbms.zip).//To-Do
+1. Download it from [here](unreal_tournament_4_0.4.25d.bms).
 
 2. Extract the archive inside the *# Ressources* folder.
 
