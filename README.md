@@ -1,3 +1,4 @@
+# MiA BSFD Modding Tools
 
 ## Contract
 
@@ -47,12 +48,12 @@ They are defined as follow:
 
 ### External Link
 
-Whenever possible I will link to external ressources for further reading and download.
+Whenever possible I will link to external resources for further reading and download.
 
-I cannot be held responsible if at some point in the future some of these ressources become unavailable.  
+I cannot be held responsible if at some point in the future some of these resources become unavailable.  
 I can however guarantee that as of the creation of this document or upon updating a specific section I make / will make sure to review the availability of the links.
 
-If a specific ressource become unavailable, I will try to find an alternative or failing that clearly indicate that I could not find any.
+If a specific resource become unavailable, I will try to find an alternative or failing that clearly indicate that I could not find any.
 
 ### Operating System
 
@@ -129,7 +130,7 @@ One day perhaps, you will put down modding on this very window.
 
 ## Organization
 
-I highly recommend you setup a *dedicated folder* on your computer for *MiA Modding* (Mine is called exactly that), it will contain all the *tools*, *ressources* and *references* necessary for modding and will grow as you get familiar with the material.
+I highly recommend you setup a *dedicated folder* on your computer for *MiA Modding* (Mine is called exactly that), it will contain all the *tools*, *resources* and *references* necessary for modding and will grow as you get familiar with the material.
 
 You are of course free to organize your workspace whichever way works best for you.  
 For consistency sake however I will reference this dedicated folder and provide tips on how to expand it as we go.  
@@ -138,7 +139,7 @@ Just remember to adapt it in a way that works best for **you**.
 For now I would recommend to create the following folders:
 ```
 # Ideas
-# Ressources
+# Resources
 Mod Reference
 PAK Output
 Work Directory
@@ -150,7 +151,7 @@ I called mine *Made in Abyss PAK location*.
 You will thus have:
 ```
 # Ideas
-# Ressources
+# Resources
 Mod Reference
 PAK Output
 Work Directory
@@ -172,7 +173,7 @@ The output file will be **big**.
 
 1. Download it from [here](https://aluigi.altervista.org/papers/quickbms.zip).
 
-2. Extract the archive inside the *# Ressources* folder (extract into a folder, do not extract the loose content directly).
+2. Extract the archive inside the *# Resources* folder (extract into a folder, do not extract the loose content directly).
 
 The content of the extracted folder should be as follows:
 ```
@@ -193,7 +194,7 @@ reimport2.bat
 
 5. The program will ask you to provide a *BMS script*, grab [this one](UnrealPak.zip).
 
-    *Tip* : I recommend you put the BMS script inside the *# Ressources* folder.
+    *Tip* : I recommend you put the BMS script inside the *# Resources* folder.
 
 5. The program will ask you to select the *input archives/files* (The .pak).  
     Select *MadeInAbyss-BSFD-WindowsNoEditor.pak*.
@@ -279,7 +280,7 @@ To do so you will need a tool called *UnrealPak*.
 
 1. Download it from [here](unreal_tournament_4_0.4.25d.bms).
 
-2. Extract the archive inside the *# Ressources* folder.
+2. Extract the archive inside the *# Resources* folder.
 
 The content of the extracted folder should be as follows:
 ```
@@ -290,7 +291,7 @@ UnrealPak-Without-Compression.bat
 UnrealPak.exe
 ```
 
-**Tip** : I recommend you create a *shortcut* for the pakme.bat file and put it into *# Ressources* or even *MiA Modding*, this will make it faster to navigate to it to pak your mods (Something you will do a lot while testing).
+**Tip** : I recommend you create a *shortcut* for the pakme.bat file and put it into *# Resources* or even *MiA Modding*, this will make it faster to navigate to it to pak your mods (Something you will do a lot while testing).
 
 3. Drag & Drop you mod folder into pakme.bat.
 
