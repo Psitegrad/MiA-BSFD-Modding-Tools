@@ -1,6 +1,6 @@
 # MiA BSFD Modding Tools
 
-## Contract
+# Contract
 
 
 Throughout this guide I will use specific term to convey certain instructions along with their importance.
@@ -46,7 +46,7 @@ They are defined as follow:
     
     Each one brings its own contribution. 
 
-### External Link
+## External Link
 
 Whenever possible I will link to external resources for further reading and download.
 
@@ -55,7 +55,7 @@ I can however guarantee that as of the creation of this document or upon updatin
 
 If a specific resource become unavailable, I will try to find an alternative or failing that clearly indicate that I could not find any.
 
-### Operating System
+## Operating System
 
 I mod on Windows 10.  
 If you use any other operating system I cannot guarantee how each tool will work.
@@ -66,7 +66,7 @@ It might summon a Madokajack, who knows ?
 
 Whenever you download a tool, the onus will be on you to check if it is available for your system.
 
-### Basic Knowledge
+## Basic Knowledge
 
 I will assume that you have a basic understanding of how to use a computer in general, and Windows in particular.
 
@@ -74,7 +74,7 @@ I will not explain how to unzip an archive, open common file formats or navigate
 
 Only knowledge specific to modding this game will be detailled.
 
-### Security
+## Security
 
 I guarantee that all the files I ask you to download be it from an external link or from this github page, have also been downloaded by me.
 
@@ -89,14 +89,15 @@ This is all a matter of perspective, thus windows and/or your antivirus have no 
 
 The guide's author is not labelling you as a virus, any such perception is purely fortuitous :)
 
-### Issues
+## Issues
 
 I guarantee that all that is written here have been done and redone by yours truly.  
 There is no issue with the process if you have followed the contract.
 
 Any deviation from the contract changes the scope of the certainty I provide, and will thus void the warranty.
 
-## File Structure (External)
+
+# File Structure (External)
 
 **Made in Abyss: Binary Star Falling into Darkness** is a game developed with *Unreal Engine 4.25*, it uses *[.pak](https://docs.unrealengine.com/4.26/en-US/Basics/Projects/Packaging/)* files to store some of its *assets*.
 
@@ -105,7 +106,7 @@ To do so, the assets are organized into chunks which are groups of asset files t
 
 Note: The [Content Cooking](https://docs.unrealengine.com/4.27/en-US/SharingAndReleasing/Deployment/Cooking/) process will not be explained as it falls outside the scope of this guide, the notion of organizing assets together is however very important and will be talked about later.
 
-### Pak Location
+## Pak Location
 
 The games .pak files are located under:
 ```
@@ -128,7 +129,7 @@ This is where you will start exploring the game structure as well as transfer yo
 One day perhaps, you will put down modding on this very window.
 
 
-## Organization
+# Modding Organization
 
 I highly recommend you setup a *dedicated folder* on your computer for *MiA Modding* (Mine is called exactly that), it will contain all the *tools*, *resources* and *references* necessary for modding and will grow as you get familiar with the material.
 
@@ -159,14 +160,14 @@ Made in Abyss PAK location - Shorcut
 ```
 
 
-## Unpaking
+# Unpaking
 
 Unpacking a .pak file is the process of "*opening*" the .pak to extract its content.  
 To do so you will need a tool called **QuickBMS**.
 
-### QuickBMS
+## QuickBMS
 
-**QuickBMS** is a tool that allows you (among other things) to unpack the .pak files.
+**QuickBMS** is a tool that allows you (among other things) to unpack .pak files.
 
 **Important** : Before you start unpacking, make sure you have at least 20 GB of free space.  
 The output file will be **big**.
@@ -250,9 +251,10 @@ If not, something went wrong at some point during the extraction, but I cannot t
 + Make sure none of the used files are in use (for example .pak opened by FModel).
 + Re-download QuickBMS and its BMS script.
 + Make sure you have write permission to the folder you are trying to output to.
++ Read the log to try to find any clues as to what might've happened,
 
 
-## File Structure (Internal)
+# File Structure (Internal)
 
 This is where you will truly start your dive into the game files, the game's PAK structure is open for you to explore !
 
@@ -272,8 +274,94 @@ op_STEAM.mp4
 
 Try opening one, does it look familiar ?
 
+## Folder Structure
 
-## Paking
+### Introduction
+
+Remember when I talked about how important **organizing assets together** was ?  
+Let's talk about it !
+
+In a *.pak* file the folder structure is of utmost importance !  
+This structure is how the game data is organized, and the game is hardcoded to find *specific* assets in *specific* location.  
+If you move one asset from one location to another, the game will simply *not find* that asset anymore !
+
+You can see it as looking for your keys.  
+If you have an habit of dropping them in one place then one day, for some reason, absent-mindedly dropped them elsewhere, chances are you will first go to the usual spot before realizing that, they are not there ?  
+Now as a sane human being, what do you do ?  
+Well of course you curse your past self as you anxiously pace around your house looking for them, trying to piece together what that *idiot* did.
+
+As the minutes go by, your anxiousness turns to agitation, the cursing into expletives.  
+**WHERE did I put those keys, I swear to-** oh hey there they are.  
+Seems familiar, no ? Just me ? OK...
+
+Now let's examine what the game will do.
+```
+Loading files...
+File number x missing from location y > skipping
+Loading default file from MadeInAbyss-BSFD-WindowsNoEditor.pak instead
+```
+
+As you can see the game is not a *human*, you are capable to look for something if it has changed location, **the game is not**.  
+If it is not there it will simply **not do anything else**, instead it will check in the base pak where it knows the file is then load that instead (Assuming you did not tamper with that too of course).
+
+**Advanced** : This is not strictly true, rather the game will follow the PAK load order.  
+For simplicity sake I assume there are no other PAKs with custom load orders present.
+
+**Important** : I will repeat it again, the game will not load your modded assets if you did not respect the proper folder structure !  
+This is one of the most common issue new modders will encounter.  
+If your mod doesn't work and you know you changed the proper values, check the folder structure !
+
+### Application
+
+Now let's take a look at what it looks like.
+
+Let's assume you wanted to change the localization file located under:
+```
+.\PAK Output\MadeInAbyss-BSFD-WindowsNoEditor\MadeInAbyss-BSFD\Content\Localization\Game\en\Game.locres
+```
+
+You would of course change the file but you need to keep the **folder structure** in mind.  
+If you modify the file then simply it put into a new folder, let's say for example "*My Localization Mod*" then try to Pak it, you might be surprised to find that it doesn't work, this is normal.
+
+Indeed, this is what I mean when I ask to respect the folder structure.  
+The game doesn't have any references pointing to a asset named Game.locres located in :
+```
+.\My Localization Mod\Game.locres
+```
+
+So it will simply not load it !  
+Instead you will need to do this:
+
+1. Create a new folder and name it :
+
+```
+MadeInAbyss-BSFD-WindowsNoEditor_My Localization Mod_P
+```
+
+**Important** : The first level of the folder structure must respect the pak nomenclature.  
+Remember during the unpaking when I asked you to create a folder named *MadeInAbyss-BSFD-WindowsNoEditor* ? This is the same concept.  
+The game will look for a .pak file named *MadeInAbyss-BSFD-WindowsNoEditor_String_P*.
+
+The *String* part is where you can put a name for your mod.
+
+2. Create as many sub-folder as needed until your structure mimics the one from the original asset location.  
+    So for example if we keep the .locres file from earlier, it is located under :
+```
+MadeInAbyss-BSFD-WindowsNoEditor\MadeInAbyss-BSFD\Content\Localization\Game\en\Game.locres
+```
+
+So your mod must have this structure :
+```
+MadeInAbyss-BSFD-WindowsNoEditor_My Localization Mod_P\MadeInAbyss-BSFD\Content\Localization\Game\en\Game.locres
+```
+
+**Important** : I repeat again, if your mod does not follow the same folder structure the file will not be loaded.  
+This is the last time I will repeat it.
+
+3.  Pak your mod and you are done !
+
+
+# Paking
 
 Packing a folder (Typically a mod) is the process of "*closing*" a folder containing modded assets and transforming it into a format the game can use.  
 To do so you will need a tool called *UnrealPak*.
@@ -308,7 +396,7 @@ LogPakFile:Display: Added 3 files, 764323 bytes total, time 0.01s.
 **Note** : Your console output might be more *verbose* than mine, this was confirmed in another person's system and is considered normal.  
 As long as the verification in step 4. is positive, all is good.
 
-4. Confirm the number of files paked, if this corresponds to the content of your mod folder the paking was successful, proceed to the next step.
+4. Confirm the number of files paked, if this corresponds to the content of your mod folder then the paking was successful, proceed to the next step.
 
     If you get an error, 0 files were added, or the generated .pak file is empty, then the paking failed.
     
